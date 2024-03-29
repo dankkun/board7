@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  %>    
+<%@taglib prefix="c"  %>
     
     
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 	<div>&nbsp;</div>	
 	
 	
-	<c:if test="${ sessionScope.login == null || login == '' }">
+	<c:if test="${ sessionScope.login == null || login == '' }"> 
 	<div><a href="/loginForm">로그인</a></div>
 	</c:if>
 	
