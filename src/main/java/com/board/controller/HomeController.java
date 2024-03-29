@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.board.menus.domain.MenuVo;
+import com.board.menus.mapper.MenuMapper;
 import com.board.user.domain.UserVo;
 import com.board.user.mapper.UserMapper;
 
@@ -16,6 +18,9 @@ public class HomeController {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private MenuMapper menuMapper;
 	
 	// http://localhost:9090
 	@RequestMapping("/")
@@ -38,12 +43,14 @@ public class HomeController {
 		String passwd = request.getParameter("passwd");
 		
 		UserVo userVo = userMapper.login( userid, passwd );
+		MenuVo menuVo = menuMapper.getMenu("MENU01");
 		
 		
 		String loc = "";
 		if( userVo != null) { // 아이디와 암호가 일치하면			
 		HttpSession session = request.getSession();
 		session.setAttribute("login", userVo );
+		session.setAttribute("menu", menuVo );
 		session.setMaxInactiveInterval(30 * 60); // 30분 동안 유지
 		    loc = "redirect:/";
 		} else { // 아이디 비번 틀림
