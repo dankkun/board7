@@ -32,12 +32,13 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 		//	return true;    // 로그인 체크를 중단
 		//}
 		
+		/*
 		if( obj == null) {
 			// 로그인되어 있지 않다면 /loginForm 으로 이동
 			response.sendRedirect("/loginForm");
 			return false;
 		}
-		
+		*/
 		
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);
